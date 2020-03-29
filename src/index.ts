@@ -1,15 +1,18 @@
-import dotentv from 'dotenv';
+import 'dotenv/config';
 import express from 'express';
 
 import routes from './routes';
-
-dotentv.config();
+import { connectDb } from './models';
 
 const app = express();
 
-app.use(routes);
+(async () => {
+  await connectDb();
 
-app.listen(process.env.PORT, () => {
-  // eslint-disable-next-line no-console
-  console.log(`🚀 App started on port ${process.env.PORT}`);
-});
+  app.use(routes);
+
+  app.listen(process.env.PORT, () => {
+    // eslint-disable-next-line no-console
+    console.log(`🚀 App started on port ${process.env.PORT}`);
+  });
+})();
