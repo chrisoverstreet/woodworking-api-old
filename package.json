@@ -8,7 +8,7 @@
   },
   "scripts": {
     "build": "rimraf ./build & tsc",
-    "start": "npm run build && node build/index.js",
+    "start": "node build/index.js",
     "dev": "nodemon",
     "lint": "eslint . --ext .ts",
     "prettier": "prettier --config .prettierrc 'src/**/*.ts' --write",
